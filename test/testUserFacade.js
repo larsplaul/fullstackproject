@@ -35,6 +35,13 @@ describe("Testing the User Facade", function () {
     expect(user.job[1].company).to.be.equal("BBB");
   })
 
+  it("Should change the lastUpdated time after an update", async function () {
+    var u = await User.findOne({ userName: "kw" }).exec();
+    var prevLastUpdated = u.lastUpdated;
+    var user = await userFacade.addJob("a", "a", "a",u);
+    expect(user.lastUpdated).to.be.above(prevLastUpdated);
+  })
+
   it("Should Find Kurt Wonnegut", async function () {
     var user = await userFacade.findByUsername("kw");
     expect(user.firstName).to.be.equal("Kurt");

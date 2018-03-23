@@ -44,7 +44,7 @@ describe("Testing the LocationBlog facade", async function () {
     expect(blogs.length).to.be.equal(2);
     expect(blogs[0].author.toString()).to.be.equal(user._id.toString());  
   })
-  it("should add a blogs made by Hanne",async function(){
+  it("should add a blog made by Hanne",async function(){
     var user = await User.findOne({userName: "hw"});
     var blog = await blogFacade.addLocationBlog("Blog by Hanne",67,67,user._id);
     expect(blog.author.toString()).to.be.equal(user._id.toString());  
